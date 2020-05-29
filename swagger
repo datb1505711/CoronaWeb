@@ -1,0 +1,134 @@
+---
+  openapi: "3.0.1"
+  info: 
+    title: "Login And Funds"
+    version: "1.0.0"
+    contact:
+        name: jits
+        email: jits@gmail.com
+  servers: 
+    - 
+      url: "/"
+  security: 
+    - 
+      default: []
+  paths: 
+    /login: 
+      post: 
+        parameters: 
+          - name: login
+            in: "path"
+            description: "Request Body"
+            required: true
+            style: "simple"
+            explode: false
+            schema: 
+              type: "object"
+              properties: 
+                USERNAME: 
+                  type: "string"
+                  example: "usrname"
+                PASSWORD: 
+                  type: "string"
+                  example: "password"
+        requestBody: 
+          content: {}
+          required: false
+        responses: 
+          200: 
+            description: "ok"
+        security: 
+          - 
+            default: 
+              - "LoginAndFTF"
+        x-auth-type: "Application & Application User"
+        x-throttling-tier: "Unlimited"
+    /MB0010: 
+      post: 
+        parameters: 
+          - name: MB0010
+            in: "path"
+            description: "Request Body"
+            required: true
+            style: "simple"
+            explode: false
+            schema: 
+              type: "object"
+              properties: 
+                SESSIONID: 
+                  type: "string"
+                  example: "00000171-a18e-1102-0000-0171a18e110b"
+                CREDITACC: 
+                  type: "string"
+                  example: "000000081"
+                DEBITACC: 
+                  type: "string"
+                  example: "000000082"
+                AMT: 
+                  type: "string"
+                  example: "10"
+                DEBITFEE: 
+                  type: "string"
+                  example: "0"
+                CREDITFEE: 
+                  type: "string"
+                  example: "0"
+                FEEACC: 
+                  type: "string"
+                  example: "14080129650212"
+                ID: 
+                  type: "string"
+                  example: "BHD00009"
+                DESCS: 
+                  type: "string"
+                  example: "Funds"
+        responses: 
+          200: 
+            description: "ok"
+        security: 
+          - 
+            default: 
+              - "LoginAndFTF"
+        x-auth-type: "Application & Application User"
+        x-throttling-tier: "Unlimited"
+  components: 
+    securitySchemes: 
+      default: 
+        type: "oauth2"
+        flows: 
+          implicit: 
+            authorizationUrl: "https://test.com"
+            scopes: 
+              LoginAndFTF: "asdsad"
+            x-scopes-bindings: 
+              LoginAndFTF: "LoginAndFTF"
+  x-wso2-auth-header: "Authorization"
+  x-wso2-cors: 
+    corsConfigurationEnabled: false
+    accessControlAllowOrigins: 
+      - "*"
+    accessControlAllowCredentials: false
+    accessControlAllowHeaders: 
+      - "authorization"
+      - "Access-Control-Allow-Origin"
+      - "Content-Type"
+      - "SOAPAction"
+    accessControlAllowMethods: 
+      - "GET"
+      - "PUT"
+      - "POST"
+      - "DELETE"
+      - "PATCH"
+      - "OPTIONS"
+  x-wso2-production-endpoints: 
+    urls: 
+      - "http://192.168.1.228:8787/call"
+    type: "http"
+  x-wso2-sandbox-endpoints: 
+    urls: 
+      - "http://192.168.1.228:8787/call"
+    type: "http"
+  x-wso2-basePath: "/apiftf/1.0.0"
+  x-wso2-transports: 
+    - "http"
+    - "https"
