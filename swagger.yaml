@@ -1,27 +1,38 @@
 ---
-  openapi: "3.0.1"
+  swagger: "2.0"
   info: 
-    title: "Login And Funds"
+    description: "This is an example for you to look up do another. This Example includes:Login and Fund Transfer"
     version: "1.0.0"
-    contact:
-        name: jits
-        email: jits@gmail.com
-  servers: 
-    - 
-      url: "/"
+    title: "Api Example"
+    termsOfService: "http://swagger.io/terms/"
+    contact: 
+      email: "jist@com.vn"
+    license: 
+      name: "Apache 2.0"
+      url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  host: "example.io"
+  basePath: "/v2"
+  schemes: 
+    - "https"
+    - "http"
   security: 
     - 
       default: []
   paths: 
     /login: 
       post: 
+        tags:
+          - Login
+        summary: Login Example 
+        description: Returns a session id
+        operationId: username,password
         parameters: 
-          - name: login
-            in: "path"
+          - 
+            in: "body"
+            name: "Payload"
             description: "Request Body"
-            required: true
-            style: "simple"
-            explode: false
+            required: false
+            summary: Login Example
             schema: 
               type: "object"
               properties: 
@@ -31,12 +42,9 @@
                 PASSWORD: 
                   type: "string"
                   example: "password"
-        requestBody: 
-          content: {}
-          required: false
         responses: 
           200: 
-            description: "ok"
+            description: "OK"
         security: 
           - 
             default: 
@@ -45,13 +53,17 @@
         x-throttling-tier: "Unlimited"
     /MB0010: 
       post: 
+        tags:
+          - MB0010
+        summary: MB0010 
+        description: Returns a 
+        operationId: username,password
         parameters: 
-          - name: MB0010
-            in: "path"
+          - 
+            in: "body"
+            name: "Payload"
             description: "Request Body"
-            required: true
-            style: "simple"
-            explode: false
+            required: false
             schema: 
               type: "object"
               properties: 
@@ -81,27 +93,25 @@
                   example: "BHD00009"
                 DESCS: 
                   type: "string"
-                  example: "Funds"
+                  example: "Funds Transfer!"
         responses: 
           200: 
-            description: "ok"
+            description: "OK"
         security: 
           - 
             default: 
               - "LoginAndFTF"
         x-auth-type: "Application & Application User"
         x-throttling-tier: "Unlimited"
-  components: 
-    securitySchemes: 
-      default: 
-        type: "oauth2"
-        flows: 
-          implicit: 
-            authorizationUrl: "https://test.com"
-            scopes: 
-              LoginAndFTF: "asdsad"
-            x-scopes-bindings: 
-              LoginAndFTF: "LoginAndFTF"
+  securityDefinitions: 
+    default: 
+      type: "oauth2"
+      authorizationUrl: "https://test.com"
+      flow: "implicit"
+      scopes: 
+        LoginAndFTF: "Login And Fund Transfer"
+      x-scopes-bindings: 
+        LoginAndFTF: "LoginAndFTF"
   x-wso2-auth-header: "Authorization"
   x-wso2-cors: 
     corsConfigurationEnabled: false
